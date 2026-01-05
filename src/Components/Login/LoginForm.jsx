@@ -1,14 +1,18 @@
 import React from "react";
-import URL from "../../utils/url";
 import Input from "../../Form/Input";
 import Button from "../../Form/Button";
 import useForm from "../../Hooks/useForm";
 
-//  endpoint: '/jwt-auth/v1/token',
+import { TOKEN_POST } from "../../api";
 
 const LoginForm = () => {
   const username = useForm();
   const password = useForm();
+
+  const { endpoint, options } = TOKEN_POST({
+    username: username.value,
+    password: password.value,
+  });
 
   async function handleForm(e) {
     e.preventDefault();
@@ -17,19 +21,10 @@ const LoginForm = () => {
     const isPassValid = password.validate();
 
     if (isUserValid && isPassValid) {
-      const endpoint = "/jwt-auth/v1/token";
-
-      const getToken = await fetch(URL + endpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: username.value,
-          password: password.value,
-        }),
-      });
+      const getToken = await fetch(endpoint, options);
       const response = await getToken.json();
+      window.localStorage.setItem("token", response.token);
+      console.log(response);
       return response;
     }
   }
