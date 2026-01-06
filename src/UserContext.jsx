@@ -21,22 +21,33 @@ export const GlobalContext = ({ children }) => {
   }, [login]);
 
   async function getUser(token) {
-    const { endpoint, options } = USER_GET(token);
-    const getToken = await fetch(endpoint, options);
-    const response = await getToken.json();
-    setData(response);
-    setLogin(true);
+    try {
+      const { endpoint, options } = USER_GET(token);
+      const getToken = await fetch(endpoint, options);
+      const response = await getToken.json();
+      setData(response);
+      setLogin(true);
+    } catch {
+      logout();
+    }
   }
 
   async function Login(username, password) {
-    const { endpoint, options } = TOKEN_POST({
-      username,
-      password,
-    });
-    const getToken = await fetch(endpoint, options);
-    const response = await getToken.json();
-    window.localStorage.setItem("token", response.token);
-    await getUser(response.token);
+    try {
+      const { endpoint, options } = TOKEN_POST({
+        username,
+        password,
+      });
+      const getToken = await fetch(endpoint, options);
+
+      if (!getToken.ok) throw new Error("Usuário inválido!");
+
+      const response = await getToken.json();
+      window.localStorage.setItem("token", response.token);
+      await getUser(response.token);
+    } catch {
+      logout();
+    }
   }
 
   useEffect(() => {
@@ -53,6 +64,7 @@ export const GlobalContext = ({ children }) => {
       }
     }
     autoLogin();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function logout() {
