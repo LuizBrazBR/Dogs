@@ -12,3 +12,26 @@ export function TOKEN_POST(body) {
     },
   };
 }
+
+export function USER_GET(token) {
+  return {
+    endpoint: `${URL}/api/user`,
+    options: {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  };
+}
+
+export function TOKEN_VALIDATE_POST(token) {
+  return {
+    endpoint: `${URL}/jwt-auth/v1/token/validate`,
+    options: {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  };
+}

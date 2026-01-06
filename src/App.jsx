@@ -5,17 +5,22 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Home from "./Components/Home";
 import Login from "./Components/Login/Login";
+import { GlobalContext } from "./UserContext";
+import Conta from "./Components/Conta";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login/*" element={<Login />} />
-        </Routes>
-        <Footer />
+        <GlobalContext>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/conta" element={<Conta />} />
+            <Route path="/login/*" element={<Login />} />
+          </Routes>
+          <Footer />
+        </GlobalContext>
       </BrowserRouter>
     </div>
   );
