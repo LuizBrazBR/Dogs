@@ -3,6 +3,7 @@ import Input from "../../Form/Input";
 import Button from "../../Form/Button";
 import useForm from "../../Hooks/useForm";
 import { UserContext } from "../../UserContext";
+import { Navigate } from "react-router-dom";
 
 const LoginForm = () => {
   const username = useForm();
@@ -13,7 +14,7 @@ const LoginForm = () => {
   //   password: password.value,
   // });
 
-  const { Login } = useContext(UserContext);
+  const { Login, login } = useContext(UserContext);
 
   function handleForm(e) {
     e.preventDefault();
@@ -24,6 +25,10 @@ const LoginForm = () => {
     if (isUserValid && isPassValid) {
       Login(username.value, password.value);
     }
+  }
+
+  if (login) {
+    return <Navigate to="/conta" />;
   }
 
   return (
