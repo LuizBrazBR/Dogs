@@ -4,6 +4,9 @@ import Button from "../../Form/Button";
 import useForm from "../../Hooks/useForm";
 import { UserContext } from "../../UserContext";
 import { Navigate } from "react-router-dom";
+import styles from "./LoginForm.module.css";
+import stylesBtn from "../../Form/Button.module.css";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
   const username = useForm();
@@ -14,7 +17,7 @@ const LoginForm = () => {
   //   password: password.value,
   // });
 
-  const { Login, login } = useContext(UserContext);
+  const { Login } = useContext(UserContext);
 
   function handleForm(e) {
     e.preventDefault();
@@ -27,17 +30,25 @@ const LoginForm = () => {
     }
   }
 
-  if (login) {
-    return <Navigate to="/conta" />;
-  }
-
   return (
-    <section>
-      <form onSubmit={handleForm}>
+    <section className="animeLeft">
+      <h1 className="title">Login</h1>
+
+      <form onSubmit={handleForm} className={styles.form}>
         <Input label="Usuário" id="username" {...username} />
         <Input label="Senha" id="password" type="password" {...password} />
         <Button>Entrar</Button>
       </form>
+      <Link className={styles.perdeu} to="/login/perdeu">
+        Perdeu a Senha?
+      </Link>
+      <div className={styles.cadastro}>
+        <h2 className={styles.subtitle}>Cadastre-se</h2>
+        <p>Ainda não possui conta? Cadastre-se no site.</p>
+        <Link className={stylesBtn.button} to="/login/criar">
+          Cadastro
+        </Link>
+      </div>
     </section>
   );
 };
