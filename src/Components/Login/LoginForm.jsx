@@ -7,6 +7,7 @@ import { Navigate } from "react-router-dom";
 import styles from "./LoginForm.module.css";
 import stylesBtn from "../../Form/Button.module.css";
 import { Link } from "react-router-dom";
+import Error from "../Error";
 
 const LoginForm = () => {
   const username = useForm();

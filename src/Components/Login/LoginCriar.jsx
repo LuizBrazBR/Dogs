@@ -4,28 +4,29 @@ import Button from "../../Form/Button";
 import useForm from "../../Hooks/useForm";
 import { USER_POST } from "../../api";
 import { UserContext } from "../../UserContext";
+import useFetch from "../../Hooks/useFetch";
+import Error from "../Error";
 
 const LoginCriar = () => {
   const username = useForm();
   const password = useForm();
   const email = useForm("email");
+  const { request, error, loading } = useFetch();
 
   const { Login } = useContext(UserContext);
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    try {
-      const { endpoint, options } = USER_POST({
-        username: username.value,
-        password: password.value,
-        email: email.value,
-      });
-      const json = await fetch(endpoint, options);
-      if (!json.ok) throw new Error("Usuário já cadastrado!");
-      Login(username.value, password.value);
-    } catch (err) {
-      console.log(err);
+    const { endpoint, options } = USER_POST({
+      username: username.value,
+      password: password.value,
+      email: email.value,
+    });
+
+    const response = await request(endpoint, options);
+    if (response) {
+      await Login(username.value, password.value);
     }
   }
 
@@ -36,7 +37,12 @@ const LoginCriar = () => {
         <Input label="Usuário" {...username} />
         <Input label="Email" type="email" {...email} />
         <Input label="Senha" type="password" {...password} />
-        <Button>Entrar</Button>
+        {loading ? (
+          <Button disabled>Cadastrando...</Button>
+        ) : (
+          <Button>Cadastrar</Button>
+        )}
+        {error && <Error>{error}</Error>}
       </form>
     </div>
   );
