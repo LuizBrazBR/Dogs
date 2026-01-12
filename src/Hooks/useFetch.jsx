@@ -13,7 +13,7 @@ const useFetch = () => {
       const json = await response.json();
       if (!response.ok) throw new Error(json.message);
       setData(json);
-      return response.ok;
+      return { response, json };
     } catch (err) {
       setError(err.message);
       setData(null);
@@ -23,7 +23,7 @@ const useFetch = () => {
     }
   }, []);
 
-  return { data, loading, error, request };
+  return { data, loading, error, request, setError };
 };
 
 export default useFetch;

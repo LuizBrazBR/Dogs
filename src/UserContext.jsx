@@ -1,5 +1,6 @@
 import React, { createContext, useCallback, useEffect, useState } from "react";
 import { TOKEN_POST, TOKEN_VALIDATE_POST, USER_GET } from "./api";
+import useFetch from "./Hooks/useFetch";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const UserContext = createContext();
@@ -7,6 +8,12 @@ export const UserContext = createContext();
 export const GlobalContext = ({ children }) => {
   const [data, setData] = useState(null);
   const [login, setLogin] = useState(false);
+
+  const { request, error, loading, setError } = useFetch();
+
+  const clearError = useCallback(() => {
+    setError(null);
+  }, [setError]);
 
   const getUser = useCallback(async (token) => {
     try {
@@ -26,13 +33,12 @@ export const GlobalContext = ({ children }) => {
         username,
         password,
       });
-      const getToken = await fetch(endpoint, options);
+      const { json, response } = await request(endpoint, options);
 
-      if (!getToken.ok) throw new Error("Usuário inválido!");
+      if (!response.ok) throw new Error(json.message);
 
-      const response = await getToken.json();
-      window.localStorage.setItem("token", response.token);
-      await getUser(response.token);
+      window.localStorage.setItem("token", json.token);
+      await getUser(json.token);
     } catch {
       setLogin(false);
     }
@@ -60,7 +66,9 @@ export const GlobalContext = ({ children }) => {
   }
 
   return (
-    <UserContext.Provider value={{ Login, data, login, logout }}>
+    <UserContext.Provider
+      value={{ Login, data, login, logout, error, loading, clearError }}
+    >
       {children}
     </UserContext.Provider>
   );

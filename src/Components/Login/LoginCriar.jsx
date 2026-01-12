@@ -24,8 +24,8 @@ const LoginCriar = () => {
       email: email.value,
     });
 
-    const response = await request(endpoint, options);
-    if (response) {
+    const { response } = await request(endpoint, options);
+    if (response.ok) {
       await Login(username.value, password.value);
     }
   }

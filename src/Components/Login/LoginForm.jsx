@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Input from "../../Form/Input";
 import Button from "../../Form/Button";
 import useForm from "../../Hooks/useForm";
@@ -18,7 +18,7 @@ const LoginForm = () => {
   //   password: password.value,
   // });
 
-  const { Login } = useContext(UserContext);
+  const { Login, error, loading, clearError } = useContext(UserContext);
 
   function handleForm(e) {
     e.preventDefault();
@@ -31,6 +31,10 @@ const LoginForm = () => {
     }
   }
 
+  useEffect(() => {
+    clearError();
+  }, [clearError]);
+
   return (
     <section className="animeLeft">
       <h1 className="title">Login</h1>
@@ -38,7 +42,12 @@ const LoginForm = () => {
       <form onSubmit={handleForm} className={styles.form}>
         <Input label="Usuário" id="username" {...username} />
         <Input label="Senha" id="password" type="password" {...password} />
-        <Button>Entrar</Button>
+        {loading ? (
+          <Button disabled>Entrando...</Button>
+        ) : (
+          <Button>Entrar</Button>
+        )}
+        {error && <Error>{error}</Error>}
       </form>
       <Link className={styles.perdeu} to="/login/perdeu">
         Perdeu a Senha?
