@@ -8,7 +8,7 @@ export const UserContext = createContext();
 export const GlobalContext = ({ children }) => {
   const [data, setData] = useState(null);
   const [login, setLogin] = useState(false);
-
+  const [authLoading, setAuthLoading] = useState(true);
   const { request, error, loading, setError } = useFetch();
 
   const clearError = useCallback(() => {
@@ -46,14 +46,17 @@ export const GlobalContext = ({ children }) => {
 
   useEffect(() => {
     async function autoLogin() {
-      const token = window.localStorage.getItem("token");
-
-      if (token) {
-        const { endpoint, options } = TOKEN_VALIDATE_POST(token);
-        const sendToken = await fetch(endpoint, options);
-        if (sendToken.ok) {
-          await getUser(token);
+      try {
+        const token = window.localStorage.getItem("token");
+        if (token) {
+          const { endpoint, options } = TOKEN_VALIDATE_POST(token);
+          const sendToken = await fetch(endpoint, options);
+          if (sendToken.ok) {
+            await getUser(token);
+          }
         }
+      } finally {
+        setAuthLoading(false);
       }
     }
     autoLogin();
@@ -67,7 +70,16 @@ export const GlobalContext = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ Login, data, login, logout, error, loading, clearError }}
+      value={{
+        Login,
+        data,
+        login,
+        logout,
+        error,
+        loading,
+        clearError,
+        authLoading,
+      }}
     >
       {children}
     </UserContext.Provider>
