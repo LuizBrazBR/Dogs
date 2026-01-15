@@ -6,9 +6,9 @@ import Footer from "./Components/Footer";
 import Home from "./Components/Home";
 import Login from "./Components/Login/Login";
 import { GlobalContext } from "./UserContext";
-import Conta from "./Components/Conta";
 import ProtectedRoute from "./Components/Helper/ProtectedRoute";
 import PublicRoute from "./Components/Helper/PublicRoute";
+import User from "./Components/User/User";
 
 function App() {
   return (
@@ -20,10 +20,10 @@ function App() {
             <Route path="/" element={<Home />} />
 
             <Route
-              path="/conta"
+              path="/conta/*"
               element={
                 <ProtectedRoute>
-                  <Conta />
+                  <User />
                 </ProtectedRoute>
               }
             />
