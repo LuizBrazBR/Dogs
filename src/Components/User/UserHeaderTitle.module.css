@@ -3,4 +3,5 @@
   grid-template-columns: 1fr auto;
   align-items: center;
   margin-top: 1rem;
+  position: relative;
 }

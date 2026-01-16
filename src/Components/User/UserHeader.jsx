@@ -29,7 +29,11 @@ const UserHeader = () => {
       )}
 
       <nav
-        className={`${!mobile && styles.nav} ${mobile && styles.mobile} ${mobileActive && styles.mobileActive}`}
+        className={
+          mobile
+            ? `${styles.mobile} ${mobileActive && styles.mobileActive}`
+            : styles.nav
+        }
       >
         <NavLink
           to="/conta"
