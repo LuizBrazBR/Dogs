@@ -14,7 +14,7 @@ const UserPost = () => {
   const idade = useForm();
   const [preview, setPreview] = useState(null);
   const [image, setImage] = useState(null);
-  const { request, error } = useFetch();
+  const { request, error, loading } = useFetch();
 
   function onChange({ target }) {
     const img = target.files[0];
@@ -48,8 +48,8 @@ const UserPost = () => {
   }
 
   return (
-    <section className={`animeLeft ${styles.grid}`} onSubmit={handleSubmit}>
-      <form action="">
+    <section className={`animeLeft ${styles.grid}`}>
+      <form action="" onSubmit={handleSubmit}>
         <Input label="Nome" id="nome" {...nome} />
         <Input label="Peso" id="peso" type="number" {...peso} />
         <Input label="Idade" id="idade" type="number" {...idade} />
@@ -59,7 +59,11 @@ const UserPost = () => {
           onChange={onChange}
           style={{ marginBlock: "1rem" }}
         />
-        <Button>Enviar</Button>
+        {loading ? (
+          <Button disabled>Enviando...</Button>
+        ) : (
+          <Button>Enviar</Button>
+        )}
         {error && <Error>{error}</Error>}
       </form>
       <div
