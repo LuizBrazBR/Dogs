@@ -5,6 +5,8 @@ import useForm from "../../Hooks/useForm";
 import styles from "./UserPost.module.css";
 import { PHOTO_POST } from "../../api";
 import useFetch from "../../Hooks/useFetch";
+import Error from "../Error";
+import { useNavigate } from "react-router-dom";
 
 const UserPost = () => {
   const nome = useForm();
@@ -21,6 +23,8 @@ const UserPost = () => {
     setImage(img);
   }
 
+  const navigate = useNavigate();
+
   async function handleSubmit(e) {
     e.preventDefault();
     const token = window.localStorage.getItem("token");
@@ -31,16 +35,13 @@ const UserPost = () => {
     formData.append("img", image);
 
     try {
-      const { endpoint, options } = PHOTO_POST({
-        formData,
-        token,
-      });
+      const { endpoint, options } = PHOTO_POST(formData, token);
 
       const { json, response } = await request(endpoint, options);
 
       if (!response.ok) throw new Error(json.message);
 
-      console.log("PASSOU");
+      navigate("/");
     } catch {
       console.log(error);
     }
@@ -59,6 +60,7 @@ const UserPost = () => {
           style={{ marginBlock: "1rem" }}
         />
         <Button>Enviar</Button>
+        {error && <Error>{error}</Error>}
       </form>
       <div
         style={{ background: `url(${preview})` + " no-repeat center" }}

@@ -52,10 +52,12 @@ export function USER_POST(body) {
 export function PHOTO_POST(formData, token) {
   return {
     endpoint: `${URL}/api/photo`,
-    method: "POST",
-    headers: {
-      Authorization: "Bearer " + token,
+    options: {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+      body: formData,
     },
-    body: formData,
   };
 }
