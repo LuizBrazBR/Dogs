@@ -19,7 +19,8 @@ const FeedPhotos = () => {
     <div className={`container ${styles.containerPhoto}`}>
       {data &&
         data.map((photo) => {
-          return <Photos src={photo.src} alt={photo.title} />;
+          console.log(photo);
+          return <Photos {...photo} />;
         })}
     </div>
   );

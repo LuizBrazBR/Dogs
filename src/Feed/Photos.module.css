@@ -1,0 +1,41 @@
+.acessos {
+  display: none;
+}
+
+.section:hover .acessos {
+  display: initial;
+  z-index: 1;
+}
+
+.section:hover img {
+  filter: brightness(50%); /* Makes the image 50% darker */
+  z-index: 0;
+}
+
+.acessos::before {
+  content: "";
+  background: url(../Assets/visualizacao.svg);
+  height: 10px;
+  width: 16px;
+  color: aliceblue;
+  display: inline-block;
+  margin-right: 4px;
+}
+
+.section:hover {
+  display: grid;
+  color: white;
+  cursor: pointer;
+  align-items: center;
+  justify-items: center;
+}
+
+.section img {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.acessos {
+  grid-row: 1;
+  grid-column: 1;
+}

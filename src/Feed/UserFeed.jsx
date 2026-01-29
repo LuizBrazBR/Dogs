@@ -6,28 +6,22 @@ import styles from "./FeedPhotos.module.css";
 import Photos from "./Photos";
 
 const UserFeed = () => {
-  const { data: id } = useContext(UserContext);
-  {
-    id && console.log("Meu ID é", id.id);
-  }
+  const { data: context } = useContext(UserContext);
 
-  const { data, loading, error, request, setError } = useFetch();
+  const { data, request } = useFetch();
 
-  const { endpoint, options } = PHOTO_GET(id.id);
+  const { endpoint, options } = PHOTO_GET(context.id);
 
   useEffect(() => {
     request(endpoint.photos_query, options);
-
-    console.log(endpoint.photos_query);
-  }, []);
+  }, [endpoint.photos_query, options, request]);
 
   return (
     <div>
-      {" "}
       <div className={`container ${styles.containerPhoto}`}>
         {data &&
           data.map((photo) => {
-            return <Photos src={photo.src} alt={photo.title} />;
+            return <Photos {...photo} />;
           })}
       </div>
     </div>
