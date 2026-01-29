@@ -9,6 +9,7 @@ import { GlobalContext } from "./UserContext";
 import ProtectedRoute from "./Components/Helper/ProtectedRoute";
 import PublicRoute from "./Components/Helper/PublicRoute";
 import User from "./Components/User/User";
+import FeedPhotos from "./Feed/FeedPhotos";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
         <GlobalContext>
           <Header />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<FeedPhotos />} />
 
             <Route
               path="/conta/*"

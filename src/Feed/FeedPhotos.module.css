@@ -1,0 +1,11 @@
+.containerPhoto {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+img:nth-of-type(6n + 2) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
