@@ -11,9 +11,9 @@ const UserFeed = () => {
   const { data, request } = useFetch();
 
   useEffect(() => {
-    const { endpoint, options } = PHOTO_GET(context.id);
+    const { endpoint, options } = PHOTO_GET(9, 1, context.id);
 
-    request(endpoint.photos_query, options);
+    request(endpoint, options);
   }, [request, context.id]);
 
   return (
@@ -21,7 +21,7 @@ const UserFeed = () => {
       <div className={`container ${styles.containerPhoto}`}>
         {data &&
           data.map((photo) => {
-            return <Photos {...photo} />;
+            return <Photos key={photo.id} {...photo} />;
           })}
       </div>
     </div>

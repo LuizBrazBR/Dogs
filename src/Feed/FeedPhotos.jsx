@@ -5,13 +5,12 @@ import Photos from "./Photos";
 import styles from "./FeedPhotos.module.css";
 
 const FeedPhotos = () => {
-  const { data, loading, error, request, setError } = useFetch();
-
-  const { endpoint, options } = PHOTO_GET();
+  const { data, request } = useFetch();
 
   useEffect(() => {
-    request(endpoint.photos_query, options);
-  }, []);
+    const { endpoint, options } = PHOTO_GET(9, 1, 0);
+    request(endpoint, options);
+  }, [request]);
 
   console.log(data);
 
@@ -20,7 +19,7 @@ const FeedPhotos = () => {
       {data &&
         data.map((photo) => {
           console.log(photo);
-          return <Photos {...photo} />;
+          return <Photos key={photo.id} {...photo} />;
         })}
     </div>
   );

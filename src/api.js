@@ -63,13 +63,9 @@ export function PHOTO_POST(formData, token) {
 }
 
 // query: ?_total=1&_page=1&_user=6
-export function PHOTO_GET(id) {
+export function PHOTO_GET(total, page, id) {
   return {
-    endpoint: {
-      photos: `${URL}/api/photo`,
-      photos_query: `${URL}/api/photo/?_total=9&_page=1&_user=${id}`,
-      photo: `${URL}/api/photo/:id`,
-    },
+    endpoint: `${URL}/api/photo/?_total=${total}&_page=${page}&_user=${id}`,
     options: {
       method: "GET",
     },
