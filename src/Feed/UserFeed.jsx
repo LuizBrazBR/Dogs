@@ -10,11 +10,11 @@ const UserFeed = () => {
 
   const { data, request } = useFetch();
 
-  const { endpoint, options } = PHOTO_GET(context.id);
-
   useEffect(() => {
+    const { endpoint, options } = PHOTO_GET(context.id);
+
     request(endpoint.photos_query, options);
-  }, [endpoint.photos_query, options, request]);
+  }, [request, context.id]);
 
   return (
     <div>
