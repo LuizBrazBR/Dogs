@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import useFetch from "../Hooks/useFetch";
-import { PHOTO_GET } from "../api";
-import Photos from "./Photos";
-import styles from "./FeedPhotos.module.css";
+import React, { useEffect } from 'react';
+import useFetch from '../Hooks/useFetch';
+import { PHOTO_GET } from '../api';
+import Photos from './Photos';
+import styles from './FeedPhotos.module.css';
 
-const FeedPhotos = () => {
+const FeedPhotos = ({ setModal }) => {
   const { data, request } = useFetch();
 
   useEffect(() => {
@@ -12,14 +12,11 @@ const FeedPhotos = () => {
     request(endpoint, options);
   }, [request]);
 
-  console.log(data);
-
   return (
     <div className={`container ${styles.containerPhoto}`}>
       {data &&
         data.map((photo) => {
-          console.log(photo);
-          return <Photos key={photo.id} {...photo} />;
+          return <Photos key={photo.id} {...photo} setModal={setModal} />;
         })}
     </div>
   );

@@ -1,15 +1,16 @@
-import React from "react";
-import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./Components/Header";
-import Footer from "./Components/Footer";
-import Home from "./Components/Home";
-import Login from "./Components/Login/Login";
-import { GlobalContext } from "./UserContext";
-import ProtectedRoute from "./Components/Helper/ProtectedRoute";
-import PublicRoute from "./Components/Helper/PublicRoute";
-import User from "./Components/User/User";
-import FeedPhotos from "./Feed/FeedPhotos";
+import React from 'react';
+import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
+import Home from './Components/Home';
+import Login from './Components/Login/Login';
+import { GlobalContext } from './UserContext';
+import ProtectedRoute from './Components/Helper/ProtectedRoute';
+import PublicRoute from './Components/Helper/PublicRoute';
+import User from './Components/User/User';
+import FeedPhotos from './Feed/FeedPhotos';
+import Feed from './Feed/Feed';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
         <GlobalContext>
           <Header />
           <Routes>
-            <Route path="/" element={<FeedPhotos />} />
+            <Route path="/" element={<Feed />} />
 
             <Route
               path="/conta/*"
