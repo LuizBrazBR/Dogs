@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import useFetch from '../Hooks/useFetch';
 import { PHOTO_GET_ID } from '../api';
 import ModalPhoto from './ModalPhoto';
+import styles from './FeedModal.module.css';
 
 const FeedModal = ({ modal }) => {
   const { request, data } = useFetch();
@@ -11,7 +12,11 @@ const FeedModal = ({ modal }) => {
     request(endpoint, options);
   }, [modal.id, request]);
 
-  return <ModalPhoto data={data} />;
+  return (
+    <div className={styles.modal}>
+      <ModalPhoto data={data} />
+    </div>
+  );
 };
 
 export default FeedModal;

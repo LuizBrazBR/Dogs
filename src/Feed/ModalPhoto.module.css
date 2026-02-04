@@ -1,0 +1,16 @@
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  padding: 0;
+}
+
+.details {
+  border-radius: 0 0.2rem 0.2rem 0;
+  background-color: white;
+
+}
+
+.grid img {
+  border-radius: 0.2rem 0 0 0.2rem;
+
+}
