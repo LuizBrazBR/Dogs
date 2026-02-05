@@ -7,10 +7,44 @@
 .details {
   border-radius: 0 0.2rem 0.2rem 0;
   background-color: white;
+  padding: 2rem;
 
 }
 
 .grid img {
   border-radius: 0.2rem 0 0 0.2rem;
 
+}
+
+.author {
+  display: flex;
+  justify-content: space-between;
+  color: #333;
+  opacity: 0.5;
+}
+
+.author a:hover {
+  text-decoration:underline
+}
+.acessos::before {
+  content: "";
+  background: url(../Assets/visualizacao-black.svg) ;
+  height: 10px;
+  width: 16px;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.info {
+  font-weight: bold;
+  display: flex;
+  gap: 2rem;
+  font-size: 16px;
+ 
+}
+
+.info *::before {
+  content: '|';
+  margin-right: 4px;
+  font-size: 24px;
 }

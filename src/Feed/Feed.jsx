@@ -7,7 +7,7 @@ const Feed = () => {
 
   return (
     <>
-      {modal && <FeedModal modal={modal} />}
+      {modal && <FeedModal modal={modal} setModal={setModal} />}
       <FeedPhotos setModal={setModal} />
     </>
   );

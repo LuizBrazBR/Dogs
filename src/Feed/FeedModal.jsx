@@ -4,7 +4,7 @@ import { PHOTO_GET_ID } from '../api';
 import ModalPhoto from './ModalPhoto';
 import styles from './FeedModal.module.css';
 
-const FeedModal = ({ modal }) => {
+const FeedModal = ({ modal, setModal }) => {
   const { request, data } = useFetch();
 
   useEffect(() => {
@@ -12,8 +12,16 @@ const FeedModal = ({ modal }) => {
     request(endpoint, options);
   }, [modal.id, request]);
 
+  function handleClickOutside(e) {
+    const { target, currentTarget } = e;
+
+    if (target === currentTarget) {
+      setModal(null);
+    }
+  }
+
   return (
-    <div className={styles.modal}>
+    <div className={styles.modal} onClick={handleClickOutside}>
       <ModalPhoto data={data} />
     </div>
   );
