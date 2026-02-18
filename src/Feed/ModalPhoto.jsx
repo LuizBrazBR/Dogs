@@ -1,10 +1,11 @@
-import React from 'react';
-import styles from './ModalPhoto.module.css';
+import React from "react";
+import styles from "./ModalPhoto.module.css";
+import PhotoComments from "./PhotoComments";
 
 const ModalPhoto = ({ data }) => {
   if (!data) return null;
 
-  const { photo } = data;
+  const { photo, comments } = data;
 
   return (
     <div className={`container ${styles.grid}`}>
@@ -21,6 +22,8 @@ const ModalPhoto = ({ data }) => {
           <span>{photo.peso} kg</span>
           <span>{photo.idade} anos</span>
         </div>
+
+        <PhotoComments comments={comments} />
       </div>
     </div>
   );

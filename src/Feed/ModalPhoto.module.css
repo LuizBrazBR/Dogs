@@ -8,12 +8,17 @@
   border-radius: 0 0.2rem 0.2rem 0;
   background-color: white;
   padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto auto 1fr;
+}
 
+.details > * {
+  grid-column: 1 / -1;
 }
 
 .grid img {
   border-radius: 0.2rem 0 0 0.2rem;
-
 }
 
 .author {
@@ -24,11 +29,11 @@
 }
 
 .author a:hover {
-  text-decoration:underline
+  text-decoration: underline;
 }
 .acessos::before {
   content: "";
-  background: url(../Assets/visualizacao-black.svg) ;
+  background: url(../Assets/visualizacao-black.svg);
   height: 10px;
   width: 16px;
   display: inline-block;
@@ -40,11 +45,10 @@
   display: flex;
   gap: 2rem;
   font-size: 16px;
- 
 }
 
 .info *::before {
-  content: '|';
+  content: "|";
   margin-right: 4px;
   font-size: 24px;
 }
