@@ -1,6 +1,6 @@
-import React from "react";
-import styles from "./ModalPhoto.module.css";
-import PhotoComments from "./PhotoComments";
+import React from 'react';
+import styles from './ModalPhoto.module.css';
+import PhotoComments from './PhotoComments';
 
 const ModalPhoto = ({ data }) => {
   if (!data) return null;
@@ -23,7 +23,7 @@ const ModalPhoto = ({ data }) => {
           <span>{photo.idade} anos</span>
         </div>
 
-        <PhotoComments comments={comments} />
+        <PhotoComments comments={comments} photo={photo} />
       </div>
     </div>
   );

@@ -1,25 +1,25 @@
-import React from "react";
+import React, { useState } from 'react';
 
-import styles from "./PhotoComments.module.css";
-import PhotoCommentForm from "./PhotoCommentForm";
+import styles from './PhotoComments.module.css';
+import PhotoCommentForm from './PhotoCommentForm';
 
-const PhotoComments = ({ comments }) => {
-  console.log(comments);
-
-  if (!comments.length) return;
+const PhotoComments = ({ comments, photo }) => {
+  const [comment, setComment] = useState(comments);
 
   return (
     <div className={styles.comments}>
-      {comments.map((comment) => {
-        return (
-          <div key={comment.comment_ID}>
-            <b>{comment.comment_author}: </b>
-            <span>{comment.comment_content}</span>
-          </div>
-        );
-      })}
+      <div>
+        {comment.map((comment) => {
+          return (
+            <div key={comment.comment_ID} className={styles.comment}>
+              <b>{comment.comment_author}: </b>
+              <span>{comment.comment_content}</span>
+            </div>
+          );
+        })}
+      </div>
 
-      <PhotoCommentForm />
+      <PhotoCommentForm photo={photo} setComment={setComment} />
     </div>
   );
 };
