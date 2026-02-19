@@ -27,7 +27,6 @@ const UserPost = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const token = window.localStorage.getItem("token");
     const formData = new FormData();
     formData.append("nome", nome.value);
     formData.append("peso", peso.value);
@@ -35,7 +34,7 @@ const UserPost = () => {
     formData.append("img", image);
 
     try {
-      const { endpoint, options } = PHOTO_POST(formData, token);
+      const { endpoint, options } = PHOTO_POST(formData);
 
       const { json, response } = await request(endpoint, options);
 

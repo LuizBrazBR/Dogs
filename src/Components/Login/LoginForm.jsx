@@ -13,11 +13,6 @@ const LoginForm = () => {
   const username = useForm();
   const password = useForm();
 
-  // const { endpoint, options } = TOKEN_POST({
-  //   username: username.value,
-  //   password: password.value,
-  // });
-
   const { Login, error, loading, clearError } = useContext(UserContext);
 
   function handleForm(e) {

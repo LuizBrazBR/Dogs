@@ -1,12 +1,12 @@
-export const URL = 'https://dogsapi.origamid.dev/json';
+export const URL = "https://dogsapi.origamid.dev/json";
 
 export function TOKEN_POST(body) {
   return {
     endpoint: `${URL}/jwt-auth/v1/token`,
     options: {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
     },
@@ -28,7 +28,7 @@ export function TOKEN_VALIDATE_POST(token) {
   return {
     endpoint: `${URL}/jwt-auth/v1/token/validate`,
     options: {
-      method: 'POST',
+      method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -40,22 +40,22 @@ export function USER_POST(body) {
   return {
     endpoint: `${URL}/api/user`,
     options: {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
     },
   };
 }
 
-export function PHOTO_POST(formData, token) {
+export function PHOTO_POST(formData) {
   return {
     endpoint: `${URL}/api/photo`,
     options: {
-      method: 'POST',
+      method: "POST",
       headers: {
-        Authorization: 'Bearer ' + token,
+        Authorization: "Bearer ",
       },
       body: formData,
     },
@@ -67,7 +67,7 @@ export function PHOTO_GET(total, page, id) {
   return {
     endpoint: `${URL}/api/photo/?_total=${total}&_page=${page}&_user=${id}`,
     options: {
-      method: 'GET',
+      method: "GET",
     },
   };
 }
@@ -77,19 +77,19 @@ export function PHOTO_GET_ID(id) {
   return {
     endpoint: `${URL}/api/photo/${id}`,
     options: {
-      method: 'GET',
+      method: "GET",
     },
   };
 }
 
-export function COMMENT_POST(id, token, body) {
+export function COMMENT_POST(id, body) {
   return {
     endpoint: `${URL}/api/comment/${id}`,
     options: {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + token,
+        "Content-Type": "application/json",
+        Authorization: "Bearer ",
       },
       body: JSON.stringify(body),
     },

@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState } from "react";
 
-import styles from './PhotoComments.module.css';
-import PhotoCommentForm from './PhotoCommentForm';
-import { UserContext } from '../UserContext';
+import styles from "./PhotoComments.module.css";
+import PhotoCommentForm from "./PhotoCommentForm";
+import { UserContext } from "../UserContext";
 
 const PhotoComments = ({ comments, photo }) => {
   const [comment, setComment] = useState(comments);
@@ -21,7 +21,7 @@ const PhotoComments = ({ comments, photo }) => {
         })}
       </div>
 
-      {login && <PhotoCommentForm photo={photo} setComment={setComment} />}
+      {login && <PhotoCommentForm id={photo.id} setComment={setComment} />}
     </div>
   );
 };

@@ -1,31 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import Enviar from '../../src/Assets/enviar.svg?react';
-import useFetch from '../Hooks/useFetch';
-import { COMMENT_POST } from '../api';
+import React, { useState } from "react";
+import Enviar from "../../src/Assets/enviar.svg?react";
+import useFetch from "../Hooks/useFetch";
+import { COMMENT_POST } from "../api";
 
-const INITIAL = { comment: '' };
+const PhotoCommentForm = ({ id, setComment }) => {
+  const { request } = useFetch();
 
-const PhotoCommentForm = ({ photo, setComment }) => {
-  const { id } = photo;
-
-  const { request, data } = useFetch();
-
-  const [value, setValue] = useState(INITIAL);
-
-  useEffect(() => {
-    if (data) {
-      console.log('Data mudou:', data);
-      setComment((prev) => [...prev, data]);
-    }
-  }, [data, setComment]);
+  const [value, setValue] = useState(null);
 
   async function handleClick(e) {
     e.preventDefault();
 
-    const token = window.localStorage.getItem('token');
-    const { endpoint, options } = COMMENT_POST(id, token, value);
-    request(endpoint, options);
-    setValue(INITIAL);
+    const { endpoint, options } = COMMENT_POST(id, { comment: value });
+    const { json, response } = await request(endpoint, options);
+    if (response.ok) {
+      setComment((prev) => [...prev, json]);
+      setValue("");
+    }
   }
 
   return (
@@ -34,9 +25,9 @@ const PhotoCommentForm = ({ photo, setComment }) => {
         name="comment"
         id="comment"
         onChange={(e) => {
-          setValue({ ...value, comment: e.target.value });
+          setValue(e.target.value);
         }}
-        value={value.comment}
+        value={value}
       ></textarea>
       <button>
         <Enviar />
