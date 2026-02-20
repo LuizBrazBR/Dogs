@@ -10,7 +10,7 @@ const PhotoComments = ({ comments, photo }) => {
 
   return (
     <div className={styles.comments}>
-      <div>
+      <div className={styles.section}>
         {comment.map((comment) => {
           return (
             <div key={comment.comment_ID} className={styles.comment}>

@@ -2,6 +2,17 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   padding: 0;
+  height: 100%;
+}
+
+.grid > * {
+  min-height: 0;
+}
+
+.grid img {
+  border-radius: 0.2rem 0 0 0.2rem;
+  height: 100%;
+  object-fit: cover;
 }
 
 .details {
@@ -15,10 +26,6 @@
 
 .details > * {
   grid-column: 1 / -1;
-}
-
-.grid img {
-  border-radius: 0.2rem 0 0 0.2rem;
 }
 
 .author {
