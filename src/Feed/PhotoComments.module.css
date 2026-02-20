@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   margin-top: 2rem;
-  overflow-y: auto;
+  min-height: 0;
 }
 
 .comment {
@@ -13,4 +13,5 @@
 
 .section {
   overflow-y: auto;
+  margin-bottom: 1rem;
 }

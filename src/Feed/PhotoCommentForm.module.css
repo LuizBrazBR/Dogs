@@ -1,0 +1,27 @@
+.form {
+  display: flex;
+  gap: 4px;
+}
+
+.form textarea {
+  border: none;
+  background-color: #eee;
+  resize: none;
+  padding: 0.8rem;
+  border-radius: 4px;
+  outline: none;
+}
+
+.form textarea:focus,
+.form textarea:hover {
+  box-shadow:
+    0 0 0 3px #fea,
+    0 0 0 4px #fb1;
+
+  background: white;
+}
+
+.form button {
+  border: none;
+  background-color: transparent;
+}

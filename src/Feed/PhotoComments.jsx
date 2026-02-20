@@ -21,7 +21,13 @@ const PhotoComments = ({ comments, photo }) => {
         })}
       </div>
 
-      {login && <PhotoCommentForm id={photo.id} setComment={setComment} />}
+      {login && (
+        <PhotoCommentForm
+          id={photo.id}
+          setComment={setComment}
+          className={styles.PhotoCommentForm}
+        />
+      )}
     </div>
   );
 };
