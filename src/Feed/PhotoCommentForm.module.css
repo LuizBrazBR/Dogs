@@ -25,3 +25,29 @@
   border: none;
   background-color: transparent;
 }
+
+svg {
+  color: #333333;
+  cursor: pointer;
+}
+
+svg:focus,
+svg:hover {
+  color: #fb1
+  
+
+}
+
+svg:focus g, svg:hover g{
+  animation: latir 0.6s infinite
+}
+
+@keyframes latir {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
