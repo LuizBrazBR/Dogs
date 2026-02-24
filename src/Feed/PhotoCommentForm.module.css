@@ -33,13 +33,13 @@ svg {
 
 svg:focus,
 svg:hover {
-  color: #fb1
-  
-
+  color: #fea;
+  stroke: #fb1;
 }
 
-svg:focus g, svg:hover g{
-  animation: latir 0.6s infinite
+svg:focus g,
+svg:hover g {
+  animation: latir 0.6s infinite;
 }
 
 @keyframes latir {
