@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import Enviar from '../../src/Assets/enviar.svg?react';
-import useFetch from '../Hooks/useFetch';
-import { COMMENT_POST } from '../api';
-import styles from './PhotoCommentForm.module.css';
+import React, { useState } from "react";
+import Enviar from "../../src/Assets/enviar.svg?react";
+import useFetch from "../Hooks/useFetch";
+import { COMMENT_POST } from "../api";
+import styles from "./PhotoCommentForm.module.css";
 
 const PhotoCommentForm = ({ id, setComment }) => {
   const { request } = useFetch();
 
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState("");
 
   async function handleClick(e) {
     e.preventDefault();
@@ -16,7 +16,7 @@ const PhotoCommentForm = ({ id, setComment }) => {
     const { json, response } = await request(endpoint, options);
     if (response.ok) {
       setComment((prev) => [...prev, json]);
-      setValue('');
+      setValue("");
     }
   }
 

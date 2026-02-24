@@ -1,18 +1,28 @@
-import React from 'react';
-import styles from './ModalPhoto.module.css';
-import PhotoComments from './PhotoComments';
+import React, { useContext } from "react";
+import styles from "./ModalPhoto.module.css";
+import PhotoComments from "./PhotoComments";
+import { UserContext } from "../UserContext";
+import PhotoDelete from "./PhotoDelete";
 
 const ModalPhoto = ({ data }) => {
+  const { data: login } = useContext(UserContext);
+
   if (!data) return null;
 
   const { photo, comments } = data;
+
+  console.log(login.username);
 
   return (
     <div className={`container ${styles.grid}`}>
       <img src={photo.src} alt="" />
       <div className={styles.details}>
         <div className={styles.author}>
-          <a href="./author">@{photo.author}</a>
+          {login.username === photo.author ? (
+            <PhotoDelete id={photo.id} />
+          ) : (
+            <a href="./author">@{photo.author}</a>
+          )}
           <span className={styles.acessos}>{photo.acessos}</span>
         </div>
         <div>
