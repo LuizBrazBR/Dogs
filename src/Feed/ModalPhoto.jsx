@@ -11,14 +11,12 @@ const ModalPhoto = ({ data }) => {
 
   const { photo, comments } = data;
 
-  console.log(login.username);
-
   return (
     <div className={`container ${styles.grid}`}>
       <img src={photo.src} alt="" />
       <div className={styles.details}>
         <div className={styles.author}>
-          {login.username === photo.author ? (
+          {login && login.username === photo.author ? (
             <PhotoDelete id={photo.id} />
           ) : (
             <a href="./author">@{photo.author}</a>
