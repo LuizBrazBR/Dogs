@@ -1,18 +1,14 @@
 .grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  padding: 0;
+  display: flex;
   height: 100%;
-}
-
-.grid > * {
-  min-height: 0;
 }
 
 .grid img {
   border-radius: 0.2rem 0 0 0.2rem;
   height: 100%;
   object-fit: cover;
+  min-width: 0; /* permite encolher */
+  flex: 2;
 }
 
 .details {
@@ -22,6 +18,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto auto auto 1fr;
+  flex: 1;
 }
 
 .details > * {

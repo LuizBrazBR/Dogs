@@ -3,6 +3,7 @@ import styles from "./ModalPhoto.module.css";
 import PhotoComments from "./PhotoComments";
 import { UserContext } from "../UserContext";
 import PhotoDelete from "./PhotoDelete";
+import Skeleton from "../Components/Skeleton";
 
 const ModalPhoto = ({ data }) => {
   const { data: login } = useContext(UserContext);
@@ -13,7 +14,8 @@ const ModalPhoto = ({ data }) => {
 
   return (
     <div className={`container ${styles.grid}`}>
-      <img src={photo.src} alt="" />
+      <Skeleton src={photo.src} />
+
       <div className={styles.details}>
         <div className={styles.author}>
           {login && login.username === photo.author ? (
