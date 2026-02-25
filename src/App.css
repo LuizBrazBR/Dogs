@@ -52,6 +52,11 @@ a {
   margin: 0 auto;
 }
 
+.containerModal {
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
 .title {
   font-family: var(--type-second);
   line-height: 1;
