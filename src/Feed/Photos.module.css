@@ -1,8 +1,16 @@
 .acessos {
   display: none;
+  grid-row: 1;
+  grid-column: 1;
+  justify-self: center;
+  align-self: center;
+  color: white;
+  z-index: 1;
+  position: absolute; /* tira do fluxo do grid */
 }
 
 .section {
+  display: grid;
   width: 100%;
   position: relative;
   aspect-ratio: 1 / 1; /* tamanho normal */
@@ -22,13 +30,11 @@
 }
 
 .section:hover .acessos {
-  display: initial;
-  z-index: 1;
+  display: block;
 }
 
 .section:hover img {
   filter: brightness(50%); /* Makes the image 50% darker */
-  z-index: 0;
 }
 
 .acessos::before {
@@ -42,11 +48,8 @@
 }
 
 .section:hover {
-  display: grid;
   color: white;
   cursor: pointer;
-  align-items: center;
-  justify-items: center;
 }
 
 .section img {
