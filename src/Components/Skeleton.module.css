@@ -5,9 +5,10 @@
   animation: shimmer 1.4s ease infinite;
 }
 
-/* formatos */
 .skeletonImg {
-  flex: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* aqui sim */
 }
 
 @keyframes shimmer {

@@ -13,8 +13,10 @@ const ModalPhoto = ({ data }) => {
   const { photo, comments } = data;
 
   return (
-    <div className={`containerModal ${styles.grid}`}>
-      <Skeleton src={photo.src} className={styles.skeleton} />
+    <div className={`containerModal ${styles.grid} `}>
+      <div className={styles.skeleton}>
+        <Skeleton src={photo.src} />
+      </div>
 
       <div className={styles.details}>
         <div className={styles.author}>
