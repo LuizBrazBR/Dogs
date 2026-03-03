@@ -6,19 +6,11 @@
 }
 
 .spinner {
-  width: 60px;
-  height: 60px;
-  border: 6px solid #e0e0e0; /* cor de fundo */
-  border-top: 6px solid #4f46e5; /* cor animada (ex: azul) */
+  border: 2px solid #e0e0e0; /* cor de fundo */
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  padding: 5px 0 0 5px;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.latir {
+  opacity: 0;
 }
