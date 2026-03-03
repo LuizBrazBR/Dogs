@@ -5,6 +5,6 @@ import Spinner from "./Components/Spinner.jsx";
 
 createRoot(document.getElementById("root")).render(
   // <StrictMode>
-  <Spinner />,
+  <App />,
   // </StrictMode>
 );
