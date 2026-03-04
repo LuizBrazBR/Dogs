@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
-import useFetch from '../Hooks/useFetch';
-import { PHOTO_GET_ID } from '../api';
-import ModalPhoto from './ModalPhoto';
-import styles from './FeedModal.module.css';
+import React, { useEffect } from "react";
+import useFetch from "../Hooks/useFetch";
+import { PHOTO_GET_ID } from "../api";
+import ModalPhoto from "./ModalPhoto";
+import styles from "./FeedModal.module.css";
+import Spinner from "../Components/Spinner";
 
 const FeedModal = ({ modal, setModal }) => {
-  const { request, data } = useFetch();
+  const { request, data, loading } = useFetch();
 
   useEffect(() => {
     const { endpoint, options } = PHOTO_GET_ID(modal.id);
@@ -22,6 +23,7 @@ const FeedModal = ({ modal, setModal }) => {
 
   return (
     <div className={styles.modal} onClick={handleClickOutside}>
+      {loading && <Spinner />}
       <ModalPhoto data={data} />
     </div>
   );
