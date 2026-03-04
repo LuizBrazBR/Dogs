@@ -1,17 +1,46 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import useFetch from "../Hooks/useFetch";
 import { PHOTO_GET } from "../api";
 import Photos from "./Photos";
 import styles from "./FeedPhotos.module.css";
 import Spinner from "../Components/Spinner";
 
-const FeedPhotos = ({ setModal }) => {
+const FeedPhotos = ({ setModal, page, setPage }) => {
   const { data, request, loading } = useFetch();
+  const [infinite, setInfinite] = useState(false);
+  const [awaitApi, setAwaitApi] = useState(false);
 
   useEffect(() => {
-    const { endpoint, options } = PHOTO_GET(9, 1, 0);
-    request(endpoint, options);
-  }, [request]);
+    if (!awaitApi) {
+      const { endpoint, options } = PHOTO_GET(3, page, 0);
+      request(endpoint, options);
+    }
+  }, [request, page, awaitApi]);
+
+  useEffect(() => {
+    function carregarMais() {
+      if (
+        window.innerHeight + window.scrollY >=
+          document.body.offsetHeight - 100 &&
+        !infinite &&
+        !awaitApi
+      ) {
+        if (data && data.length > 0) {
+          setPage((prev) => [...prev, prev.length + 1]);
+          setAwaitApi(true);
+        } else {
+          setAwaitApi(true);
+          setInfinite(true);
+        }
+      }
+    }
+
+    window.addEventListener("wheel", carregarMais);
+
+    return () => {
+      window.removeEventListener("wheel", carregarMais);
+    };
+  }, [data, awaitApi, infinite, setPage]);
 
   if (loading) return <Spinner />;
 

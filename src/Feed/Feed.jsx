@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
-import FeedPhotos from './FeedPhotos';
-import FeedModal from './FeedModal';
+import React, { useState } from "react";
+import FeedPhotos from "./FeedPhotos";
+import FeedModal from "./FeedModal";
 
 const Feed = () => {
   const [modal, setModal] = useState(null);
 
+  const [pages, setPage] = useState([1]);
+
   return (
     <>
       {modal && <FeedModal modal={modal} setModal={setModal} />}
-      <FeedPhotos setModal={setModal} />
+
+      {pages.map((page) => {
+        return <FeedPhotos setModal={setModal} page={page} setPage={setPage} />;
+      })}
     </>
   );
 };
