@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import styles from "./ModalPhoto.module.css";
-import PhotoComments from "./PhotoComments";
-import { UserContext } from "../UserContext";
-import PhotoDelete from "./PhotoDelete";
-import Skeleton from "../Components/Skeleton";
+import React, { useContext } from 'react';
+import styles from './ModalPhoto.module.css';
+import PhotoComments from './PhotoComments';
+import { UserContext } from '../UserContext';
+import PhotoDelete from './PhotoDelete';
+import Skeleton from '../Components/Skeleton';
 
 const ModalPhoto = ({ data }) => {
   const { data: login } = useContext(UserContext);

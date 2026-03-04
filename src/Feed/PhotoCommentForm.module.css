@@ -1,6 +1,7 @@
 .form {
   display: flex;
   gap: 4px;
+  justify-content: space-around;
 }
 
 .form textarea {
@@ -10,6 +11,7 @@
   padding: 0.8rem;
   border-radius: 4px;
   outline: none;
+  width: 100%;
 }
 
 .form textarea:focus,
