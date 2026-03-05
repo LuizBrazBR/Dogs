@@ -11,25 +11,26 @@ const FeedPhotos = ({ setModal, page, setPage }) => {
   const [awaitApi, setAwaitApi] = useState(false);
 
   useEffect(() => {
-    if (!awaitApi) {
+    if (!infinite) {
       const { endpoint, options } = PHOTO_GET(3, page, 0);
       request(endpoint, options);
+      setTimeout(() => {
+        setAwaitApi(false);
+        console.log("Fui");
+      }, 500);
     }
-  }, [request, page, awaitApi]);
+  }, [request, page, infinite]);
 
   useEffect(() => {
     function carregarMais() {
       if (
         window.innerHeight + window.scrollY >=
-          document.body.offsetHeight - 100 &&
-        !infinite &&
-        !awaitApi
+        document.body.offsetHeight - 100
       ) {
-        if (data && data.length > 0) {
+        if (data && data.length > 0 && !awaitApi) {
+          setAwaitApi(true);
           setPage((prev) => [...prev, prev.length + 1]);
-          setAwaitApi(true);
         } else {
-          setAwaitApi(true);
           setInfinite(true);
         }
       }
