@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import useFetch from "../Hooks/useFetch";
-import { PHOTO_GET } from "../api";
-import Photos from "./Photos";
-import styles from "./FeedPhotos.module.css";
-import Spinner from "../Components/Spinner";
+import React, { useEffect, useState } from 'react';
+import useFetch from '../Hooks/useFetch';
+import { PHOTO_GET } from '../api';
+import Photos from './Photos';
+import styles from './FeedPhotos.module.css';
+import Spinner from '../Components/Spinner';
 
 const FeedPhotos = ({ setModal, page, setPage }) => {
   const { data, request, loading } = useFetch();
@@ -12,12 +12,19 @@ const FeedPhotos = ({ setModal, page, setPage }) => {
 
   useEffect(() => {
     if (!infinite) {
-      const { endpoint, options } = PHOTO_GET(3, page, 0);
-      request(endpoint, options);
-      setTimeout(() => {
-        setAwaitApi(false);
-        console.log("Fui");
-      }, 500);
+      async function requestMore() {
+        const { endpoint, options } = PHOTO_GET(3, page, 0);
+        const { json, response } = await request(endpoint, options);
+
+        if (response && response.ok && json.length > 0) {
+          setTimeout(() => {
+            setAwaitApi(false);
+            console.log('Fui');
+          }, 500);
+        }
+      }
+
+      requestMore();
     }
   }, [request, page, infinite]);
 
@@ -36,10 +43,10 @@ const FeedPhotos = ({ setModal, page, setPage }) => {
       }
     }
 
-    window.addEventListener("wheel", carregarMais);
+    window.addEventListener('wheel', carregarMais);
 
     return () => {
-      window.removeEventListener("wheel", carregarMais);
+      window.removeEventListener('wheel', carregarMais);
     };
   }, [data, awaitApi, infinite, setPage]);
 
