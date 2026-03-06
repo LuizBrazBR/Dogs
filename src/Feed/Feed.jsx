@@ -12,7 +12,14 @@ const Feed = () => {
       {modal && <FeedModal modal={modal} setModal={setModal} />}
 
       {pages.map((page) => {
-        return <FeedPhotos setModal={setModal} page={page} setPage={setPage} />;
+        return (
+          <FeedPhotos
+            key={page}
+            setModal={setModal}
+            page={page}
+            setPage={setPage}
+          />
+        );
       })}
     </>
   );
