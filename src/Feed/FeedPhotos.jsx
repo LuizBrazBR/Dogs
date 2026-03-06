@@ -13,13 +13,12 @@ const FeedPhotos = ({ setModal, page, setPage }) => {
   useEffect(() => {
     if (!infinite) {
       async function requestMore() {
-        const { endpoint, options } = PHOTO_GET(3, page, 0);
+        const { endpoint, options } = PHOTO_GET(6, page, 0);
         const { json, response } = await request(endpoint, options);
 
         if (response && response.ok && json.length > 0) {
           setTimeout(() => {
             setAwaitApi(false);
-            console.log('Fui');
           }, 500);
         }
       }
@@ -44,9 +43,11 @@ const FeedPhotos = ({ setModal, page, setPage }) => {
     }
 
     window.addEventListener('wheel', carregarMais);
+    window.addEventListener('scroll', carregarMais);
 
     return () => {
       window.removeEventListener('wheel', carregarMais);
+      window.removeEventListener('scroll', carregarMais);
     };
   }, [data, awaitApi, infinite, setPage]);
 
