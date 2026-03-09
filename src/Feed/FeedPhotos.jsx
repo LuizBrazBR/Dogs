@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import useFetch from '../Hooks/useFetch';
 import { PHOTO_GET } from '../api';
 import Photos from './Photos';
@@ -7,11 +7,14 @@ import Spinner from '../Components/Spinner';
 
 const FeedPhotos = ({ setModal, page, setPage, total }) => {
   const { data, request, loading } = useFetch();
-  const [infinite, setInfinite] = useState(false);
+  //const [infinite, setInfinite] = useState(false);
+  const infinite = useRef(false); // ✅
+  const loadingApi = useRef(false); // guard síncrono
   const [awaitApi, setAwaitApi] = useState(false);
 
   useEffect(() => {
-    if (!infinite) {
+    if (!infinite.current) {
+      loadingApi.current = true; // ← falta isso aqui
       async function requestMore() {
         const { endpoint, options } = PHOTO_GET(total, page, 0);
         const { json, response } = await request(endpoint, options);
@@ -19,7 +22,10 @@ const FeedPhotos = ({ setModal, page, setPage, total }) => {
         if (response && response.ok && json.length === total) {
           setTimeout(() => {
             setAwaitApi(false);
+            loadingApi.current = false;
           }, 500);
+        } else {
+          infinite.current = true;
         }
       }
 
@@ -29,17 +35,18 @@ const FeedPhotos = ({ setModal, page, setPage, total }) => {
 
   useEffect(() => {
     function carregarMais() {
-      if (awaitApi || infinite) return;
+      if (awaitApi || infinite.current || loadingApi.current) return;
 
       if (
         window.innerHeight + window.scrollY >=
         document.body.offsetHeight - 100
       ) {
-        if (data && data.length > 0 && !awaitApi) {
+        if (data && data.length > 0 && !awaitApi && !loadingApi.current) {
+          loadingApi.current = true;
           setAwaitApi(true);
           setPage((prev) => [...prev, prev.length + 1]);
         } else {
-          setInfinite(true);
+          infinite.current = true;
         }
       }
     }
@@ -61,6 +68,7 @@ const FeedPhotos = ({ setModal, page, setPage, total }) => {
         data.map((photo) => {
           return <Photos key={photo.id} {...photo} setModal={setModal} />;
         })}
+      {data && data.length <= 0 && <p>Não existem mais postagens.</p>}
     </div>
   );
 };
