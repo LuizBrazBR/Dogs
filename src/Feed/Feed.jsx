@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-import FeedPhotos from "./FeedPhotos";
-import FeedModal from "./FeedModal";
+import React, { useState } from 'react';
+import FeedPhotos from './FeedPhotos';
+import FeedModal from './FeedModal';
+
+const TOTAL = 6;
 
 const Feed = () => {
   const [modal, setModal] = useState(null);
@@ -12,7 +14,14 @@ const Feed = () => {
       {modal && <FeedModal modal={modal} setModal={setModal} />}
 
       {pages.map((page) => {
-        return <FeedPhotos setModal={setModal} page={page} setPage={setPage} />;
+        return (
+          <FeedPhotos
+            setModal={setModal}
+            page={page}
+            total={TOTAL}
+            setPage={setPage}
+          />
+        );
       })}
     </>
   );

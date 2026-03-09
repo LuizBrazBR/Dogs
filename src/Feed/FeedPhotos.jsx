@@ -5,7 +5,7 @@ import Photos from './Photos';
 import styles from './FeedPhotos.module.css';
 import Spinner from '../Components/Spinner';
 
-const FeedPhotos = ({ setModal, page, setPage }) => {
+const FeedPhotos = ({ setModal, page, setPage, total }) => {
   const { data, request, loading } = useFetch();
   const [infinite, setInfinite] = useState(false);
   const [awaitApi, setAwaitApi] = useState(false);
@@ -13,10 +13,10 @@ const FeedPhotos = ({ setModal, page, setPage }) => {
   useEffect(() => {
     if (!infinite) {
       async function requestMore() {
-        const { endpoint, options } = PHOTO_GET(6, page, 0);
+        const { endpoint, options } = PHOTO_GET(total, page, 0);
         const { json, response } = await request(endpoint, options);
 
-        if (response && response.ok && json.length > 0) {
+        if (response && response.ok && json.length === total) {
           setTimeout(() => {
             setAwaitApi(false);
           }, 500);
@@ -25,10 +25,12 @@ const FeedPhotos = ({ setModal, page, setPage }) => {
 
       requestMore();
     }
-  }, [request, page, infinite]);
+  }, [request, page, infinite, total]);
 
   useEffect(() => {
     function carregarMais() {
+      if (awaitApi || infinite) return;
+
       if (
         window.innerHeight + window.scrollY >=
         document.body.offsetHeight - 100
