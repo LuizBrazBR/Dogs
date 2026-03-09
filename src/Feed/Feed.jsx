@@ -16,6 +16,7 @@ const Feed = () => {
       {pages.map((page) => {
         return (
           <FeedPhotos
+            key={page}
             setModal={setModal}
             page={page}
             total={TOTAL}
