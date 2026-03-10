@@ -26,7 +26,7 @@ const Photo = () => {
     error && <Error>{error}</Error>;
   }
 
-  return <ModalPhoto data={data} />;
+  return <ModalPhoto single={true} data={data} />;
 };
 
 export default Photo;

@@ -6,7 +6,7 @@ import PhotoDelete from "./PhotoDelete";
 import Skeleton from "../Components/Skeleton";
 import { Link } from "react-router-dom";
 
-const ModalPhoto = ({ data }) => {
+const ModalPhoto = ({ data, single }) => {
   const { data: login } = useContext(UserContext);
 
   if (!data) return null;
@@ -14,7 +14,9 @@ const ModalPhoto = ({ data }) => {
   const { photo, comments } = data;
 
   return (
-    <div className={`containerModal ${styles.grid} `}>
+    <div
+      className={`containerModal ${styles.grid} ${single ? styles.single : ""} `}
+    >
       <div className={styles.skeleton}>
         <Skeleton src={photo.src} />
       </div>

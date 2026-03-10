@@ -38,14 +38,7 @@ function App() {
                 </PublicRoute>
               }
             />
-            <Route
-              path="/photo/:id"
-              element={
-                <PublicRoute>
-                  <Photo />
-                </PublicRoute>
-              }
-            />
+            <Route path="/photo/:id" element={<Photo />} />
           </Routes>
           <Footer />
         </GlobalContext>
