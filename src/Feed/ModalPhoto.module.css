@@ -3,7 +3,7 @@
 }
 
 .grid.single {
-  display: block;
+  flex-direction: column;
   margin-top: 2rem;
 }
 
