@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
-import styles from './ModalPhoto.module.css';
-import PhotoComments from './PhotoComments';
-import { UserContext } from '../UserContext';
-import PhotoDelete from './PhotoDelete';
-import Skeleton from '../Components/Skeleton';
+import React, { useContext } from "react";
+import styles from "./ModalPhoto.module.css";
+import PhotoComments from "./PhotoComments";
+import { UserContext } from "../UserContext";
+import PhotoDelete from "./PhotoDelete";
+import Skeleton from "../Components/Skeleton";
+import { Link } from "react-router-dom";
 
 const ModalPhoto = ({ data }) => {
   const { data: login } = useContext(UserContext);
@@ -28,7 +29,9 @@ const ModalPhoto = ({ data }) => {
           <span className={styles.acessos}>{photo.acessos}</span>
         </div>
         <div>
-          <h1 className="title">{photo.title}</h1>
+          <Link to={`/photo/${photo.id}`}>
+            <h1 className="title">{photo.title}</h1>
+          </Link>
         </div>
         <div className={styles.info}>
           <span>{photo.peso} kg</span>
