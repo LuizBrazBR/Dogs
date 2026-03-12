@@ -12,6 +12,7 @@ import User from "./Components/User/User";
 import FeedPhotos from "./Feed/FeedPhotos";
 import Feed from "./Feed/Feed";
 import Photo from "./Feed/Photo";
+import Author from "./Feed/Author";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
               }
             />
             <Route path="/photo/:id" element={<Photo />} />
+            <Route path="/author/:user" element={<Author />} />
           </Routes>
           <Footer />
         </GlobalContext>

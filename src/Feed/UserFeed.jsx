@@ -2,8 +2,8 @@ import React, { useContext, useEffect } from "react";
 import { UserContext } from "../UserContext";
 import useFetch from "../Hooks/useFetch";
 import { PHOTO_GET } from "../api";
-import styles from "./FeedPhotos.module.css";
 import Photos from "./Photos";
+import FeedPhoto from "./FeedPhoto";
 
 const UserFeed = () => {
   const { data: context } = useContext(UserContext);
@@ -18,12 +18,7 @@ const UserFeed = () => {
 
   return (
     <div>
-      <div className={`container ${styles.containerPhoto}`}>
-        {data &&
-          data.map((photo) => {
-            return <Photos key={photo.id} {...photo} />;
-          })}
-      </div>
+      <FeedPhoto data={data} />
     </div>
   );
 };

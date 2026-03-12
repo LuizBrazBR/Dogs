@@ -5,6 +5,7 @@ import { UserContext } from "../UserContext";
 import PhotoDelete from "./PhotoDelete";
 import Skeleton from "../Components/Skeleton";
 import { Link } from "react-router-dom";
+import Author from "./Author";
 
 const ModalPhoto = ({ data, single }) => {
   const { data: login } = useContext(UserContext);
@@ -26,7 +27,7 @@ const ModalPhoto = ({ data, single }) => {
           {login && login.username === photo.author ? (
             <PhotoDelete id={photo.id} />
           ) : (
-            <a href="./author">@{photo.author}</a>
+            <Link to={`/author/${photo.author}`}>@{photo.author}</Link>
           )}
           <span className={styles.acessos}>{photo.acessos}</span>
         </div>
