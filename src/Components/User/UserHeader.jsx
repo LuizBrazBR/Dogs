@@ -8,6 +8,7 @@ import Sair from "../../Assets/sair.svg?react";
 import { UserContext } from "../../UserContext";
 import { useMediaQuery } from "react-responsive";
 import { useState } from "react";
+import FeedHome from "../../Feed/FeedHome";
 
 const UserHeader = () => {
   const mobile = useMediaQuery({ query: "(max-width: 50rem)" });

@@ -4,7 +4,7 @@ import FeedModal from "./FeedModal";
 
 const TOTAL = 6;
 
-const Feed = () => {
+const Feed = ({ user }) => {
   const [modal, setModal] = useState(null);
 
   const [pages, setPage] = useState([1]);
@@ -58,6 +58,7 @@ const Feed = () => {
             infinite={infinite}
             loadingApi={loadingApi}
             setAwaitApi={setAwaitApi}
+            user={user}
           />
         );
       })}

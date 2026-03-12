@@ -13,6 +13,7 @@ import FeedPhotos from "./Feed/FeedPhotos";
 import Feed from "./Feed/Feed";
 import Photo from "./Feed/Photo";
 import Author from "./Feed/Author";
+import FeedHome from "./Feed/FeedHome";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         <GlobalContext>
           <Header />
           <Routes>
-            <Route path="/" element={<Feed />} />
+            <Route path="/" element={<FeedHome />} />
 
             <Route
               path="/conta/*"

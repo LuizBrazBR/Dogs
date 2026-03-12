@@ -47,7 +47,7 @@ const UserPost = () => {
   }
 
   return (
-    <section className={`animeLeft ${styles.grid}`}>
+    <section className={`animeLeft ${styles.grid} container`}>
       <form action="" onSubmit={handleSubmit}>
         <Input label="Nome" id="nome" {...nome} />
         <Input label="Peso" id="peso" type="number" {...peso} />

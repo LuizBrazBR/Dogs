@@ -12,6 +12,7 @@ const FeedPhotos = ({
   infinite,
   loadingApi,
   setAwaitApi,
+  user,
 }) => {
   const { data, request, loading } = useFetch();
 
@@ -22,7 +23,7 @@ const FeedPhotos = ({
     if (!infinite.current) {
       loadingApiRef.current = true; // ← falta isso aqui
       async function requestMore() {
-        const { endpoint, options } = PHOTO_GET(total, page, 0);
+        const { endpoint, options } = PHOTO_GET(total, page, user);
         const { json, response } = await request(endpoint, options);
 
         if (response && response.ok && json.length === total) {

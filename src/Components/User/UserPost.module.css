@@ -11,4 +11,7 @@
   object-fit: cover; /* imagem preenche sem distorcer */
   border-radius: 1rem;
   background-color: #f1f3f5;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }

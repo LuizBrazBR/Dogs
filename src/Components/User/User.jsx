@@ -9,14 +9,16 @@ import UserFeed from "../../Feed/UserFeed";
 
 const User = () => {
   return (
-    <div className="container">
-      <UserHeaderTitle />
+    <>
+      <div className="container">
+        <UserHeaderTitle />
+      </div>
       <Routes>
         <Route path="/" element={<UserFeed />} end />
         <Route path="stats" element={<UserStats />} />
         <Route path="postar" element={<UserPost />} />
       </Routes>
-    </div>
+    </>
   );
 };
 
