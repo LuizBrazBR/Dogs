@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import useFetch from "../Hooks/useFetch";
 import { PHOTO_GET } from "../api";
-import Photos from "./Photos";
-import styles from "./FeedPhotos.module.css";
 import Spinner from "../Components/Spinner";
+import FeedPhoto from "./FeedPhoto";
 
 const FeedPhotos = ({
   setModal,
@@ -39,6 +38,7 @@ const FeedPhotos = ({
       requestMore();
     }
   }, [
+    user,
     request,
     page,
     infinite,
@@ -52,12 +52,8 @@ const FeedPhotos = ({
   if (loading) return <Spinner />;
 
   return (
-    <div className={`container ${styles.containerPhoto}`}>
-      {data &&
-        data.map((photo) => {
-          return <Photos key={photo.id} {...photo} setModal={setModal} />;
-        })}
-      {data && data.length <= 0 && <p>Não existem mais postagens.</p>}
+    <div className={`container`}>
+      <FeedPhoto data={data} setModal={setModal} page={page} />
     </div>
   );
 };
