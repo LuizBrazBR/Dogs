@@ -14,6 +14,7 @@ import Feed from "./Feed/Feed";
 import Photo from "./Feed/Photo";
 import Author from "./Feed/Author";
 import FeedHome from "./Feed/FeedHome";
+import NotFound from "./Components/NotFound";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
             />
             <Route path="/photo/:id" element={<Photo />} />
             <Route path="/author/:user" element={<Author />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
         </GlobalContext>

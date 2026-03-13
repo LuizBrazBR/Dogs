@@ -6,6 +6,7 @@ import UserHeaderTitle from "./UserHeaderTitle";
 import UserStats from "./UserStats";
 import UserPost from "./UserPost";
 import UserFeed from "../../Feed/UserFeed";
+import NotFound from "../NotFound";
 
 const User = () => {
   return (
@@ -17,6 +18,7 @@ const User = () => {
         <Route path="/" element={<UserFeed />} end />
         <Route path="stats" element={<UserStats />} />
         <Route path="postar" element={<UserPost />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

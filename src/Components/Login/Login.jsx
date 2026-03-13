@@ -4,6 +4,7 @@ import LoginForm from "./LoginForm";
 import styles from "./Login.module.css";
 import LoginCriar from "./LoginCriar";
 import { UserContext } from "../../UserContext";
+import NotFound from "../NotFound";
 
 const Login = () => {
   return (
@@ -12,6 +13,7 @@ const Login = () => {
         <Routes>
           <Route path="/" element={<LoginForm />} />
           <Route path="/criar" element={<LoginCriar />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </div>
