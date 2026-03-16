@@ -4,6 +4,7 @@ import useFetch from "../Hooks/useFetch";
 import { PHOTO_GET_ID } from "../api";
 import ModalPhoto from "./ModalPhoto";
 import Spinner from "../Components/Spinner";
+import Error from "../Components/Error";
 
 const Photo = () => {
   const { id } = useParams();
@@ -18,13 +19,8 @@ const Photo = () => {
     callApi();
   }, [id, request]);
 
-  {
-    loading && <Spinner />;
-  }
-
-  {
-    error && <Error>{error}</Error>;
-  }
+  if (loading) return <Spinner />;
+  if (error) return <Error>{error}</Error>;
 
   return <ModalPhoto single={true} data={data} />;
 };

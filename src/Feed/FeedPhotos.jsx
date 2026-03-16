@@ -3,6 +3,7 @@ import useFetch from "../Hooks/useFetch";
 import { PHOTO_GET } from "../api";
 import Spinner from "../Components/Spinner";
 import FeedPhoto from "./FeedPhoto";
+import Error from "../Components/Error";
 
 const FeedPhotos = ({
   setModal,
@@ -13,7 +14,7 @@ const FeedPhotos = ({
   setAwaitApi,
   user,
 }) => {
-  const { data, request, loading } = useFetch();
+  const { data, request, loading, error } = useFetch();
 
   const loadingApiRef = loadingApi;
   const infiniteApiRef = infinite;
@@ -50,6 +51,7 @@ const FeedPhotos = ({
   ]);
 
   if (loading) return <Spinner />;
+  if (error) return <Error>{error}</Error>;
 
   return (
     <div className={`container`}>
