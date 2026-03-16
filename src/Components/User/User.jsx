@@ -18,7 +18,6 @@ const User = () => {
         <Route path="/" element={<UserFeed />} end />
         <Route path="stats" element={<UserStats />} />
         <Route path="postar" element={<UserPost />} />
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

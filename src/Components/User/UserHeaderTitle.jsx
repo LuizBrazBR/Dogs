@@ -12,12 +12,13 @@ const UserHeaderTitle = () => {
     "/conta": "Minha Conta",
   };
 
-  const title = routeTitles[pathname];
+  const title = routeTitles[pathname] ?? "Erro: 404";
 
   return (
     <div className={styles.container}>
       <h1 className="title">{title}</h1>
       <UserHeader />
+      {title === "Erro: 404" && <p>Página não encontrada.</p>}
     </div>
   );
 };
