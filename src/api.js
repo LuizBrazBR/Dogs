@@ -107,3 +107,16 @@ export function PHOTO_DELETE(id) {
     },
   };
 }
+
+export function PASSWORD_LOST_POST(body) {
+  return {
+    endpoint: `${URL}/api/password/lost`,
+    options: {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}
