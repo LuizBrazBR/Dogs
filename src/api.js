@@ -120,3 +120,16 @@ export function PASSWORD_LOST_POST(body) {
     },
   };
 }
+
+export function PASSWORD_RESET_POST(body) {
+  return {
+    endpoint: `${URL}/api/password/reset`,
+    options: {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}

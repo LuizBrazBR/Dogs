@@ -13,7 +13,7 @@ const LoginPerdeuSenha = () => {
 
   async function handleClick(e) {
     e.preventDefault();
-    const url = window.location.href;
+    const url = `${window.location.origin}/login/reset`;
     const { endpoint, options } = PASSWORD_LOST_POST({
       login: login.value,
       url,
@@ -29,7 +29,9 @@ const LoginPerdeuSenha = () => {
     <section>
       <h1 className="title">Perdeu a senha?</h1>
       {ok ? (
-        <p style={{ color: "green" }}>E-mail enviado.</p>
+        <p style={{ color: "green" }}>
+          E-mail enviado! Verifique sua caixa de entrada.
+        </p>
       ) : (
         <form onSubmit={handleClick}>
           <Input label="Email / Usuário" {...login} />

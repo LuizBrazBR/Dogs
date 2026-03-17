@@ -6,6 +6,7 @@ import LoginCriar from "./LoginCriar";
 import { UserContext } from "../../UserContext";
 import NotFound from "../NotFound";
 import LoginPerdeuSenha from "./LoginPerdeuSenha";
+import LoginResetSenha from "./LoginResetSenha";
 
 const Login = () => {
   return (
@@ -15,6 +16,7 @@ const Login = () => {
           <Route path="/" element={<LoginForm />} />
           <Route path="/criar" element={<LoginCriar />} />
           <Route path="/perdeu" element={<LoginPerdeuSenha />} />
+          <Route path="/reset" element={<LoginResetSenha />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
