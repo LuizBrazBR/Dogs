@@ -18,29 +18,25 @@ const LoginResetSenha = () => {
   const { request, error, loading } = useFetch();
   const navigate = useNavigate();
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     if (password.value !== confirmPassword.value) {
       setMessage("As senhas não conferem");
       return;
-    } else {
-      setMessage(null);
     }
 
-    async function apiResetPassword() {
-      const { endpoint, options } = PASSWORD_RESET_POST({
-        login,
-        key,
-        password: password.value,
-      });
-      const { response } = await request(endpoint, options);
+    setMessage(null);
 
-      if (response.ok) {
-        navigate("/login");
-      }
+    const { endpoint, options } = PASSWORD_RESET_POST({
+      login,
+      key,
+      password: password.value,
+    });
+    const { response } = await request(endpoint, options);
+
+    if (response.ok) {
+      navigate("/login");
     }
-
-    apiResetPassword();
   }
 
   return (
@@ -50,7 +46,7 @@ const LoginResetSenha = () => {
       <form onSubmit={handleSubmit}>
         <Input label="Digite sua nova senha: " {...password} />
         <Input label="Confirme sua nova senha: " {...confirmPassword} />
-        <Error>{message}</Error>
+        {message && <Error>{message}</Error>}
         {loading ? (
           <Button disabled>Resetando senha...</Button>
         ) : (
