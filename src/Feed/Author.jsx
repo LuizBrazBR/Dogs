@@ -5,6 +5,7 @@ import { PHOTO_GET } from "../api";
 import Photos from "./Photos";
 import FeedPhoto from "./FeedPhoto";
 import Feed from "./Feed";
+import { Helmet } from "react-helmet";
 
 const Author = () => {
   const { user } = useParams();
@@ -12,6 +13,10 @@ const Author = () => {
   return (
     <>
       <section className="container">
+        <Helmet>
+          <title>{user} - Dogs</title>
+          <meta name="description" content="Página do autor" />
+        </Helmet>
         <h1 className="title">{user}</h1>
       </section>
       <Feed user={user} />

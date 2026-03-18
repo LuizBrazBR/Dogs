@@ -5,6 +5,7 @@ import Input from "../../Form/Input";
 import Button from "../../Form/Button";
 import Error from "../Error";
 import { PASSWORD_LOST_POST } from "../../api";
+import { Helmet } from "react-helmet";
 
 const LoginPerdeuSenha = () => {
   const login = useForm();
@@ -27,6 +28,10 @@ const LoginPerdeuSenha = () => {
 
   return (
     <section>
+      <Helmet>
+        <title>Esqueceu senha - Dogs</title>
+        <meta name="description" content="Página para redefinir senha" />
+      </Helmet>
       <h1 className="title">Perdeu a senha?</h1>
       {ok ? (
         <p style={{ color: "green" }}>

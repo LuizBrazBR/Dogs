@@ -6,6 +6,7 @@ import PhotoDelete from "./PhotoDelete";
 import Skeleton from "../Components/Skeleton";
 import { Link } from "react-router-dom";
 import Author from "./Author";
+import { Helmet } from "react-helmet";
 
 const ModalPhoto = ({ data, single }) => {
   const { data: login } = useContext(UserContext);
@@ -18,6 +19,10 @@ const ModalPhoto = ({ data, single }) => {
     <div
       className={`containerModal ${styles.grid} ${single ? styles.single : ""} `}
     >
+      <Helmet>
+        <title>{photo.title} - Dogs</title>
+        <meta name="description" content="Página da foto" />
+      </Helmet>
       <div className={styles.skeleton}>
         <Skeleton src={photo.src} />
       </div>

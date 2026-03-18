@@ -1,7 +1,16 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 
 const UserStats = () => {
-  return <div className="container">UserStats</div>;
+  return (
+    <>
+      <Helmet>
+        <title>Estatísticas - Dogs</title>
+        <meta name="description" content="Estatísticas" />
+      </Helmet>
+      <div className="container">UserStats</div>;
+    </>
+  );
 };
 
 export default UserStats;

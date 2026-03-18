@@ -8,6 +8,7 @@ import styles from "./LoginForm.module.css";
 import stylesBtn from "../../Form/Button.module.css";
 import { Link } from "react-router-dom";
 import Error from "../Error";
+import { Helmet } from "react-helmet";
 
 const LoginForm = () => {
   const username = useForm();
@@ -32,6 +33,10 @@ const LoginForm = () => {
 
   return (
     <section className="animeLeft">
+      <Helmet>
+        <title>Entrar - Dogs</title>
+        <meta name="description" content="Página de login" />
+      </Helmet>
       <h1 className="title">Login</h1>
 
       <form onSubmit={handleForm} className={styles.form}>

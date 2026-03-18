@@ -7,6 +7,7 @@ import { useState } from "react";
 import { PASSWORD_RESET_POST } from "../../api";
 import useFetch from "../../Hooks/useFetch";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const LoginResetSenha = () => {
   const params = new URLSearchParams(window.location.search);
@@ -41,6 +42,10 @@ const LoginResetSenha = () => {
 
   return (
     <section>
+      <Helmet>
+        <title>Resetar senha - Dogs</title>
+        <meta name="description" content="Página para resetar a senha" />
+      </Helmet>
       <h1 className="title">Resete sua senha</h1>
 
       <form onSubmit={handleSubmit}>

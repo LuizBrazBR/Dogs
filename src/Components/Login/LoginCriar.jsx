@@ -6,6 +6,7 @@ import { USER_POST } from "../../api";
 import { UserContext } from "../../UserContext";
 import useFetch from "../../Hooks/useFetch";
 import Error from "../Error";
+import { Helmet } from "react-helmet";
 
 const LoginCriar = () => {
   const username = useForm();
@@ -32,6 +33,10 @@ const LoginCriar = () => {
 
   return (
     <div className="animeLeft">
+      <Helmet>
+        <title>Criar conta - Dogs</title>
+        <meta name="description" content="Página de criação de conta" />
+      </Helmet>
       <h1 className="title">Cadastre-se</h1>
       <form action="" onSubmit={handleSubmit}>
         <Input label="Usuário" {...username} />

@@ -7,6 +7,7 @@ import { PHOTO_POST } from "../../api";
 import useFetch from "../../Hooks/useFetch";
 import Error from "../Error";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const UserPost = () => {
   const nome = useForm();
@@ -48,6 +49,10 @@ const UserPost = () => {
 
   return (
     <section className={`animeLeft ${styles.grid} container`}>
+      <Helmet>
+        <title>Postar sua foto - Dogs</title>
+        <meta name="description" content="Publicação do mural" />
+      </Helmet>
       <form action="" onSubmit={handleSubmit}>
         <Input label="Nome" id="nome" {...nome} />
         <Input label="Peso" id="peso" type="number" {...peso} />

@@ -7,6 +7,7 @@ import UserStats from "./UserStats";
 import UserPost from "./UserPost";
 import UserFeed from "../../Feed/UserFeed";
 import NotFound from "../NotFound";
+import { Helmet } from "react-helmet";
 
 const User = () => {
   return (
