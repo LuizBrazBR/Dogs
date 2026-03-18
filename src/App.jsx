@@ -18,37 +18,39 @@ import NotFound from "./Components/NotFound";
 
 function App() {
   return (
-    <div>
-      <BrowserRouter>
-        <GlobalContext>
+    <BrowserRouter>
+      <GlobalContext>
+        <div className="app">
           <Header />
-          <Routes>
-            <Route path="/" element={<FeedHome />} />
+          <main className="content">
+            <Routes>
+              <Route path="/" element={<FeedHome />} />
 
-            <Route
-              path="/conta/*"
-              element={
-                <ProtectedRoute>
-                  <User />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/login/*"
-              element={
-                <PublicRoute>
-                  <Login />
-                </PublicRoute>
-              }
-            />
-            <Route path="/photo/:id" element={<Photo />} />
-            <Route path="/author/:user" element={<Author />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+              <Route
+                path="/conta/*"
+                element={
+                  <ProtectedRoute>
+                    <User />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/login/*"
+                element={
+                  <PublicRoute>
+                    <Login />
+                  </PublicRoute>
+                }
+              />
+              <Route path="/photo/:id" element={<Photo />} />
+              <Route path="/author/:user" element={<Author />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
           <Footer />
-        </GlobalContext>
-      </BrowserRouter>
-    </div>
+        </div>
+      </GlobalContext>
+    </BrowserRouter>
   );
 }
 
