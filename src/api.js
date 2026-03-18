@@ -133,3 +133,14 @@ export function PASSWORD_RESET_POST(body) {
     },
   };
 }
+
+export function STATS_GET() {
+  return {
+    endpoint: `${URL}/api/stats`,
+    options: {
+      headers: {
+        Authorization: "Bearer ",
+      },
+    },
+  };
+}
