@@ -9,9 +9,12 @@ import {
 import styles from "./VictoryLib.module.css";
 
 const VictoryLib = ({ data }) => {
-  console.log("render");
+  console.log(data);
   return (
     <section className={styles.display}>
+      <div className={`${styles.bgVictory} ${styles.bgVictoryTotal}`}>
+        <p>Acessos: {data.reduce((t, i) => t + i.y, 0)}</p>
+      </div>
       <div className={styles.bgVictory}>
         <VictoryPie data={data} theme={VictoryTheme.clean} innerRadius={50} />
       </div>
