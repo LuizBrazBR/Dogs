@@ -1,22 +1,26 @@
 import React from "react";
-import { VictoryBar, VictoryChart, VictoryLine, VictoryTheme } from "victory";
+import {
+  VictoryBar,
+  VictoryChart,
+  VictoryLine,
+  VictoryPie,
+  VictoryTheme,
+} from "victory";
 import styles from "./VictoryLib.module.css";
 
 const VictoryLib = ({ data }) => {
   console.log("render");
   return (
-    <div className={styles.display}>
+    <section className={styles.display}>
       <div className={styles.bgVictory}>
-        <VictoryChart theme={VictoryTheme.clean} domainPadding={{ x: 20 }}>
-          <VictoryBar data={data} />
-        </VictoryChart>
+        <VictoryPie data={data} theme={VictoryTheme.clean} innerRadius={50} />
       </div>
       <div className={styles.bgVictory}>
         <VictoryChart theme={VictoryTheme.clean} domainPadding={{ x: 20 }}>
           <VictoryBar data={data} />
         </VictoryChart>
       </div>
-    </div>
+    </section>
   );
 };
 
