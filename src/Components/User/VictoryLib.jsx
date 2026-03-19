@@ -16,7 +16,16 @@ const VictoryLib = ({ data }) => {
         <p>Acessos: {data.reduce((t, i) => t + i.y, 0)}</p>
       </div>
       <div className={styles.bgVictory}>
-        <VictoryPie data={data} theme={VictoryTheme.clean} innerRadius={50} />
+        <VictoryPie
+          data={data}
+          theme={VictoryTheme.clean}
+          innerRadius={50}
+          width={400}
+          height={400}
+          style={{
+            labels: { fontSize: 14, fill: "black" },
+          }}
+        />
       </div>
       <div className={styles.bgVictory}>
         <VictoryChart theme={VictoryTheme.clean} domainPadding={{ x: 20 }}>

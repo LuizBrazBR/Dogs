@@ -1,7 +1,6 @@
 .display {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-
   gap: 0 2rem;
 }
 
@@ -9,11 +8,13 @@
   background-color: #ffffff;
   border-radius: 6px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+  font-size: 32px;
 }
 
 .bgVictoryTotal {
   grid-column: span 3;
-  margin-bottom: 3rem;
   font-size: 32px;
   padding: 2rem;
 }
