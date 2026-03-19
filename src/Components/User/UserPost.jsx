@@ -71,7 +71,7 @@ const UserPost = () => {
         {error && <Error>{error}</Error>}
       </form>
       <div
-        style={{ background: `url(${preview})` + " no-repeat center" }}
+        style={{ backgroundImage: `url(${preview})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
         className={styles.preview}
       ></div>
     </section>

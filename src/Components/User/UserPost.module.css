@@ -8,8 +8,7 @@
 .preview {
   width: 100%;
   aspect-ratio: 1 / 1; /* sempre quadrado */
-  object-fit: cover; /* imagem preenche sem distorcer */
-  border-radius: 1rem;
+border-radius: 1rem;
   background-color: #f1f3f5;
   max-width: 100%;
   height: auto;

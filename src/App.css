@@ -104,4 +104,5 @@ a {
 
 .VictoryContainer svg {
   pointer-events: none !important;
+  width: 400px !important;
 }

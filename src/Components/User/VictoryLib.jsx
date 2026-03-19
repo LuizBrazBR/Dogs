@@ -20,8 +20,6 @@ const VictoryLib = ({ data }) => {
           data={data}
           theme={VictoryTheme.clean}
           innerRadius={50}
-          width={400}
-          height={400}
           style={{
             labels: { fontSize: 14, fill: "black" },
           }}
