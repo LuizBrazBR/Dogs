@@ -101,4 +101,7 @@ a {
 .VictoryContainer svg {
   pointer-events: none !important;
 }
+.content {
+  flex: 1;
+}
 
