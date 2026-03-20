@@ -21,10 +21,6 @@
   padding: 2rem;
 }
 
-.victoryPie svg {
-  width: 100% !important;
-}
-
 @media (max-width: 800px) {
   .display {
   display: initial;
