@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 import {
   VictoryBar,
   VictoryChart,
   VictoryLine,
   VictoryPie,
   VictoryTheme,
-} from "victory";
-import styles from "./VictoryLib.module.css";
+} from 'victory';
+import styles from './VictoryLib.module.css';
 
 const VictoryLib = ({ data }) => {
   console.log(data);
@@ -15,13 +15,13 @@ const VictoryLib = ({ data }) => {
       <div className={`${styles.bgVictory} ${styles.bgVictoryTotal}`}>
         <p>Acessos: {data.reduce((t, i) => t + i.y, 0)}</p>
       </div>
-      <div className={styles.bgVictory}>
+      <div className={`${styles.bgVictory} ${styles.victoryPie}`}>
         <VictoryPie
           data={data}
           theme={VictoryTheme.clean}
           innerRadius={50}
           style={{
-            labels: { fontSize: 14, fill: "black" },
+            labels: { fontSize: 14, fill: 'black' },
           }}
         />
       </div>

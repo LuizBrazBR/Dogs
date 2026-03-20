@@ -104,5 +104,11 @@ a {
 
 .VictoryContainer svg {
   pointer-events: none !important;
-  width: 400px !important;
+ width: 400px !important;
 }
+
+@media (max-width: 800px) {
+ .VictoryContainer svg {
+ 
+ width: 100% !important
+}}

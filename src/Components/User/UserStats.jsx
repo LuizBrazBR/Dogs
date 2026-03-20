@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { Helmet } from "react-helmet";
-import useFetch from "../../Hooks/useFetch";
-import { STATS_GET } from "../../api";
-import VictoryLib from "./VictoryLib";
+import React, { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
+import useFetch from '../../Hooks/useFetch';
+import { STATS_GET } from '../../api';
+import VictoryLib from './VictoryLib';
 
 const UserStats = () => {
   const { request, data } = useFetch();

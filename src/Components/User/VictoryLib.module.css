@@ -1,6 +1,7 @@
 .display {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+   grid-template-columns: repeat(2, 1fr);
+
   gap: 0 2rem;
 }
 
@@ -11,10 +12,22 @@
   margin-bottom: 3rem;
   margin-top: 3rem;
   font-size: 32px;
+ 
 }
 
 .bgVictoryTotal {
   grid-column: span 3;
   font-size: 32px;
   padding: 2rem;
+}
+
+.victoryPie svg {
+  width: 100% !important;
+}
+
+@media (max-width: 800px) {
+  .display {
+  display: initial;
+
+  }
 }
