@@ -14,4 +14,7 @@
 .section {
   overflow-y: auto;
   margin-bottom: 1rem;
+  flex: 1;
+  min-height: 0;
+  padding-inline: 2rem;
 }
