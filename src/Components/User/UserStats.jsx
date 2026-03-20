@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
-import { Helmet } from 'react-helmet';
-import useFetch from '../../Hooks/useFetch';
-import { STATS_GET } from '../../api';
-import VictoryLib from './VictoryLib';
+import React, { useEffect, lazy, Suspense } from "react";
+import { Helmet } from "react-helmet";
+import useFetch from "../../Hooks/useFetch";
+import { STATS_GET } from "../../api";
+import Spinner from "../../Components/Spinner";
+
+const VictoryLib = lazy(() => import("./VictoryLib"));
 
 const UserStats = () => {
   const { request, data } = useFetch();
@@ -27,18 +29,19 @@ const UserStats = () => {
         <meta name="description" content="Estatísticas" />
       </Helmet>
       <div className="container">
-        {data && (
-          <VictoryLib
-            data={data.map((i) => {
-              return {
-                x: i.title,
-                y: Number(i.acessos),
-              };
-            })}
-          />
-        )}
+        <Suspense fallback={<Spinner />}>
+          {data && (
+            <VictoryLib
+              data={data.map((i) => {
+                return {
+                  x: i.title,
+                  y: Number(i.acessos),
+                };
+              })}
+            />
+          )}
+        </Suspense>
       </div>
-      ;
     </>
   );
 };
