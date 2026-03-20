@@ -28,7 +28,7 @@ const UserStats = () => {
         <title>Estatísticas - Dogs</title>
         <meta name="description" content="Estatísticas" />
       </Helmet>
-      <div className="container">
+      <div className="container animeLeft">
         <Suspense fallback={<Spinner />}>
           {data && (
             <VictoryLib

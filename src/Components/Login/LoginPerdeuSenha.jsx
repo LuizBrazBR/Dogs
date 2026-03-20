@@ -27,7 +27,7 @@ const LoginPerdeuSenha = () => {
   }
 
   return (
-    <section>
+    <section className="animeLeft">
       <Helmet>
         <title>Esqueceu senha - Dogs</title>
         <meta name="description" content="Página para redefinir senha" />

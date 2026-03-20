@@ -41,7 +41,7 @@ const LoginResetSenha = () => {
   }
 
   return (
-    <section>
+    <section className="animeLeft">
       <Helmet>
         <title>Resetar senha - Dogs</title>
         <meta name="description" content="Página para resetar a senha" />

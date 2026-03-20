@@ -12,7 +12,7 @@ const Author = () => {
 
   return (
     <>
-      <section className="container">
+      <section className="container animeLeft">
         <Helmet>
           <title>{user} - Dogs</title>
           <meta name="description" content="Página do autor" />

@@ -54,7 +54,7 @@ const FeedPhotos = ({
   if (error) return <Error>{error}</Error>;
 
   return (
-    <div className={`container`}>
+    <div className={`container animeLeft`}>
       <FeedPhoto data={data} setModal={setModal} page={page} />
     </div>
   );
